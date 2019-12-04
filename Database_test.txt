@@ -1,0 +1,11 @@
+Your Sample ID	Our/Alternative ID	Sample collection date	Date of Birth	Initials or Name	Sex	Facility or clinic name	Sample Type	Viral Load	Viral load Date	Lab Request Date	Requesting Clinician	Email Requesting Clinician	Report prepared by	Report Date	Approved by
+NMTH 1691	V19-09-098	20-Jan-19			M	MSF MALAWI	DBS	33400	20-Jan-19	02-Oct-19	Dr. Williams	deos@yahoo.co.uk	Maria N	06-Oct-19	Dr. Kintu
+MBLZ 3047	V19-09-099	21-Jan-19	15-Oct-80	FT		GHWP	Plasma		21-Jan-19	02-Oct-19	Dr. Male		Maria N		Dr. Kintu
+MBLZ 3242	V19-09-100		30-Dec-01		F	MSF MALAWI		5760		02-Oct-19	Dr. Williams	deos@yahoo.co.uk	Maria N	06-Oct-19	Dr. Kintu
+TBHC 1271	V19-09-101	23-Jan-19	05-Jul-95	GH	F	GPC	DBS	77600	23-Jan-19	02-Oct-19	Dr. Male	deos@yahoo.co.uk		06-Oct-19	
+NMTH 7331	V19-09-102	24-Jan-19	06-Jul-95		M	MSF MALAWI	Plasma		24-Jan-19	02-Oct-19			Maria N	06-Oct-19	Dr. Kintu
+NMTH 691	V19-09-103		07-Jul-95	FR			DBS	43600		02-Oct-19	Dr. Male	deos@yahoo.co.uk	Maria N		Dr. Kintu
+MUWA 3537	V19-09-104	26-Jan-19	30-Jun-58	TR	F	MSF MALAWI	Plasma	226000	26-Jan-19	02-Oct-19	Dr. Williams	deos@yahoo.co.uk	Maria N	06-Oct-19	Dr. Kintu
+CRDZ 3812	V19-09-105	27-Jan-19		GH	F	GPC		35800	27-Jan-19	02-Oct-19		deos@yahoo.co.uk		06-Oct-19	Dr. Kintu
+MBLZ 1071	V19-09-106	28-Jan-19	02-Jul-58	BV	M		DBS	121000	28-Jan-19	02-Oct-19	Dr. Williams	deos@yahoo.co.uk	Maria N	06-Oct-19	
+NKLO 834	V19-09-107		03-Jul-58	VG	M	MSF MALAWI	Plasma	23000		02-Oct-19	Dr. Male	deos@yahoo.co.uk	Maria N	06-Oct-19	Dr. Kintu

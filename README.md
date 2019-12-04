@@ -31,12 +31,12 @@ The resulting phylogeny with bootstrap values is saved as a pdf.
 
 ## Procedure
 
-3.	preprocessing.sh
+**preprocessing.sh**
 
 This bash script takes a single multi-sample fasta file as input and runs the preprocessing pipeline in two steps: 1. subtype and drug resistance query;  2. Add aligned HIV-1 reference sequences and generate phylogeny.
 
 
-Example Usage
+**Example Usage**
 
 preprocessing.sh [-h -f -t ] -- program to split fasta sequences by subtype and generate a phylogeny
 where:
@@ -44,12 +44,12 @@ where:
         -f      input sequences in single multi-sample fasta format file
         -t      text-tab delimited (.tsv) file with the patient information
 
-Command: 
+**Command:** 
 
 ./preprocessing.sh -f <input_samples.fa>
 
 
-Output: 
+**Output:** 
 
 reports_{date}/		-  directory containing all results files
 {date}.{input}.fasta	-  input fasta samples aligned to reference sequences
