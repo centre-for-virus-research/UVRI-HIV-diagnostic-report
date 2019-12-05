@@ -2,6 +2,7 @@
 '''
 Short Python script to parse json returned from sierrapy query and store sample metadata in tab delimited text file.
 Fields include sampleID, month, actualMonth and year plus a column for each drug and corresponding resistance mutation (if any).
+Modified so it can handle UVRI style labels
 '''
 
 import json
@@ -42,7 +43,6 @@ else:
 
 
 # parse sierrapy json output for relevant info
-header_list = ['SampleID', 'Year', 'Real_Month', 'Month', 'ATV', 'DRV', 'FPV', 'IDV' , 'LPV', 'NFV', 'SQV', 'TPV', 'ABC', 'AZT', 'D4T', 'DDI', 'FTC', 'LMV', 'TDF', 'DOR', 'EFV', 'ETR', 'NVP', 'RPV']
 
 start_month = 11
 start_year = 2004
@@ -52,32 +52,36 @@ with open(json_in) as json_file:
     data = json.load(json_file)
     for i in data:
         sample = i["inputSequence"]["header"]
+        
         name_list = sample.split("_")
-        if len(name_list) < 3:
-            continue
-        else:
-            day = name_list[0]
-            month = name_list[1]
-            year = name_list[2]
-            ID = name_list[3]
-            sample_month = ((int(year) - start_year) *12) + (int(month) - start_month) + 1
-            append_dict = {'SampleID': ID, 'Year': year, 'Real_Month': month, 'Month': sample_month}
+        if len(name_list)==4:
+          day = name_list[0]
+          month = name_list[1]
+          year = name_list[2]
+          ID = name_list[3]
+          sample_month = ((int(year) - start_year) *12) + (int(month) - start_month) + 1
+          append_dict = {'SampleID': ID, 'Year': year, 'Real_Month': month, 'Month': sample_month}
+          header_list = ['SampleID', 'Year', 'Real_Month', 'Month', 'ATV', 'DRV', 'FPV', 'IDV' , 'LPV', 'NFV', 'SQV', 'TPV', 'ABC', 'AZT', 'D4T', 'DDI', 'FTC', 'LMV', 'TDF', 'DOR', 'EFV', 'ETR', 'NVP', 'RPV']
 
-            for j in i["drugResistance"]:
-                for k in j["drugScores"]:
-                    drug_name = k["drug"]["name"]
-                    drug_score = k["score"]
-                    if drug_score != 0.0:
-                        mutation_list=[]
-                        for m in k["partialScores"]:
-                            for key,value in m.items():
-                                if key =='mutations':
-                                    for x, y in value[0].items():
-                                        if x == 'text':
-                                            mutation_list.append(y)
-                        append_dict[drug_name] = mutation_list
-                    else:
-                        append_dict[drug_name] = 0
+        else:
+          append_dict = {'SampleID': sample}
+          header_list = ['SampleID', 'ATV', 'DRV', 'FPV', 'IDV' , 'LPV', 'NFV', 'SQV', 'TPV', 'ABC', 'AZT', 'D4T', 'DDI', 'FTC', 'LMV', 'TDF', 'DOR', 'EFV', 'ETR', 'NVP', 'RPV']
+
+        for j in i["drugResistance"]:
+            for k in j["drugScores"]:
+                drug_name = k["drug"]["name"]
+                drug_score = k["score"]
+                if drug_score != 0.0:
+                    mutation_list=[]
+                    for m in k["partialScores"]:
+                        for key,value in m.items():
+                            if key =='mutations':
+                                for x, y in value[0].items():
+                                    if x == 'text':
+                                        mutation_list.append(y)
+                    append_dict[drug_name] = mutation_list
+                else:
+                    append_dict[drug_name] = 0
         append_list.append(append_dict)
         
 df = pd.DataFrame(append_list, columns = header_list)
